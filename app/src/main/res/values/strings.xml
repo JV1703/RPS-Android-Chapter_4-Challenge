@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RPS</string>
+    <string name="title">Kertas\nGunting\nBatu</string>
+    <string name="batuChoice">Batu</string>
+    <string name="kertasChoice">Kertas</string>
+    <string name="guntingChoice">Gunting</string>
+    <string name="player_win">Pemain 1\nMENANG!</string>
+    <string name="computer_win">Pemain 2\nMENANG!</string>
+    <string name="draw">draw</string>
+</resources>
