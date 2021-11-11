@@ -1,7 +1,12 @@
 package com.example.rps.model
 
 import android.util.Log
+import android.view.View
+import android.widget.ImageButton
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.rps.R
 
 class GameViewModel : ViewModel() {
 
@@ -16,27 +21,48 @@ class GameViewModel : ViewModel() {
     private var _result: String = ""
     val result get() = _result
 
+    private var _status: Boolean = true
+    val status get() = _status
+
+    private var _playerSelectedId = MutableLiveData<Int>(0)
+    val playerSelectedId: LiveData<Int> get() = _playerSelectedId
+
+
     fun setChoice(choice: String) {
         _choice = choice
         Log.d("GameViewModel checking", choice)
     }
 
-    fun computerChoice() {
-        _computerChoice = choices.random()
+    private fun computerChoice(): String {
+        return choices.random()
     }
 
-    fun playGame(choice: String, computerChoice: String) {
-        computerChoice()
+    fun setPlayerSelectedId(id: Int) {
+        _playerSelectedId.value = id
+    }
+
+    fun setStatus(status: Boolean) {
+        _status = status
+    }
+
+
+    fun playGame(choice: String) {
+        _computerChoice = computerChoice()
         _result = if (choice == computerChoice) {
             "draw"
-        } else if (choice == choices[0] && computerChoice == choices[2] || choice == choices[1] && computerChoice == choices[1] || choice == choices[2] && computerChoice == choices[0]
+        } else if (choice == choices[0] && computerChoice == choices[2] ||
+            choice == choices[1] && computerChoice == choices[0] ||
+            choice == choices[2] && computerChoice == choices[1]
         ) {
             "win"
         } else {
             "lose"
         }
 
-        Log.d("result", "player play: $choice, computer play: $computerChoice, result = $result")
+        Log.d(
+            "resulttesting",
+            "player play: $choice, computer play: $computerChoice, result = $result"
+        )
         Log.d("resulttesting", "computer choice = $computerChoice ${computerChoice == choices[0]}")
         Log.d("resulttesting", "computer choice = $computerChoice ${computerChoice == choices[1]}")
         Log.d("resulttesting", "computer choice = $computerChoice ${computerChoice == choices[2]}")
