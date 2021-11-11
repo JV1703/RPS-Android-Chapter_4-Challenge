@@ -8,4 +8,6 @@
     <string name="player_win">Pemain 1\nMENANG!</string>
     <string name="computer_win">Pemain 2\nMENANG!</string>
     <string name="draw">draw</string>
+    <string name="pemain_1">Pemain 1</string>
+    <string name="computer">COM</string>
 </resources>

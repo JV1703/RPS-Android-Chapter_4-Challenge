@@ -21,11 +21,10 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-1dp">
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/batuPlayer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/white"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/kertasPlayer"
             app:layout_constraintDimensionRatio="1:1"
@@ -33,13 +32,13 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/kertasPlayer"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
+            app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/batu" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/guntingPlayer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/white"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintDimensionRatio="1:1"
@@ -47,26 +46,26 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/kertasPlayer"
             app:layout_constraintTop_toBottomOf="@+id/kertasPlayer"
+            app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/gunting" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/kertasPlayer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/white"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/guntingPlayer"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/batuPlayer"
+            app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/kertas" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/batuComputer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/white"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/kertasComputer"
             app:layout_constraintDimensionRatio="1:1"
@@ -74,13 +73,13 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/kertasComputer"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
+            app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/batu" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/kertasComputer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/white"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/guntingComputer"
             app:layout_constraintDimensionRatio="1:1"
@@ -88,13 +87,13 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/batuComputer"
+            app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/kertas" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/guntingComputer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/white"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintDimensionRatio="1:1"
@@ -102,6 +101,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/kertasComputer"
             app:layout_constraintTop_toBottomOf="@+id/kertasComputer"
+            app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/gunting" />
 
         <TextView
