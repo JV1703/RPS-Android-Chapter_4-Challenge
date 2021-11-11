@@ -21,7 +21,7 @@ class GameViewModel : ViewModel() {
     private var _status: Boolean = true
     val status get() = _status
 
-    private var _playerSelectedId = MutableLiveData<Int>(0)
+    private var _playerSelectedId = MutableLiveData(0)
     val playerSelectedId: LiveData<Int> get() = _playerSelectedId
 
 

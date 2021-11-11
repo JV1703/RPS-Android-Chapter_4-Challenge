@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import android.util.Log
-import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleOwner
 import com.example.rps.databinding.ActivityMainBinding
 import com.example.rps.model.GameViewModel
 
