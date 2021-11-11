@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             gameViewModel.setPlayerSelectedId(it.id)
             it.setBackgroundColor(getColor(R.color.selected))
             gameViewModel.setStatus(false)
+            binding.batuPlayer.isEnabled = gameViewModel.status
             binding.kertasPlayer.isEnabled = gameViewModel.status
             binding.guntingPlayer.isEnabled = gameViewModel.status
             gameViewModel.playGame(gameViewModel.choice)
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             it.setBackgroundColor(getColor(R.color.selected))
             gameViewModel.setStatus(false)
             binding.batuPlayer.isEnabled = gameViewModel.status
+            binding.kertasPlayer.isEnabled = gameViewModel.status
             binding.guntingPlayer.isEnabled = gameViewModel.status
             gameViewModel.playGame(gameViewModel.choice)
             viewComputerChoice()
@@ -56,8 +58,9 @@ class MainActivity : AppCompatActivity() {
             gameViewModel.setPlayerSelectedId(it.id)
             it.setBackgroundColor(getColor(R.color.selected))
             gameViewModel.setStatus(false)
-            binding.guntingPlayer.isEnabled = gameViewModel.status
+            binding.batuPlayer.isEnabled = gameViewModel.status
             binding.kertasPlayer.isEnabled = gameViewModel.status
+            binding.guntingPlayer.isEnabled = gameViewModel.status
             gameViewModel.playGame(gameViewModel.choice)
             viewComputerChoice()
             setResult()

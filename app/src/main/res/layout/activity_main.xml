@@ -33,7 +33,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/kertasPlayer"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:srcCompat="@drawable/batu" />
+            app:srcCompat="@drawable/batu_rounded_corners" />
 
         <ImageButton
             android:id="@+id/guntingPlayer"
@@ -205,6 +205,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.7" />
+
+        <TextView
+            android:id="@+id/player_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/caveat_brush"
+            android:text="Pemain 1"
+            android:textColor="@color/name_tag"
+            android:textSize="24sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/batuPlayer"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <TextView
+            android:id="@+id/computer_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/caveat_brush"
+            android:text="COM"
+            android:textColor="@color/name_tag"
+            android:textSize="24sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/batuComputer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
