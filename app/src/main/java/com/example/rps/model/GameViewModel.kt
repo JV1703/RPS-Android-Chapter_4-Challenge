@@ -57,13 +57,8 @@ class GameViewModel : ViewModel() {
         }
 
         Log.d(
-            "resulttesting",
-            "player play: $choice, computer play: $computerChoice, result = $result"
+            "result",
+            "player: $choice - computer: $computerChoice - result = $result"
         )
-        Log.d("resulttesting", "computer choice = $computerChoice ${computerChoice == choices[0]}")
-        Log.d("resulttesting", "computer choice = $computerChoice ${computerChoice == choices[1]}")
-        Log.d("resulttesting", "computer choice = $computerChoice ${computerChoice == choices[2]}")
-
     }
-
 }
