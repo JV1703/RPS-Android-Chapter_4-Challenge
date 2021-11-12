@@ -1,13 +1,12 @@
 package com.example.rps.model
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
 
-    private val choices: List<String> = listOf("Batu", "Kertas", "Gunting")
+    private val _choices: List<String> = listOf("Batu", "Kertas", "Gunting")
+    val choices get() = _choices
 
     private var _choice: String = ""
     val choice get() = _choice
@@ -21,30 +20,28 @@ class GameViewModel : ViewModel() {
     private var _status: Boolean = true
     val status get() = _status
 
-    private var _playerSelectedId = MutableLiveData(0)
-    val playerSelectedId: LiveData<Int> get() = _playerSelectedId
-
+    private var _playerSelectedId = (0)
+    val playerSelectedId get() = _playerSelectedId
 
     fun setChoice(choice: String) {
         _choice = choice
         Log.d("GameViewModel checking", choice)
     }
 
-    private fun computerChoice(): String {
-        return choices.random()
+    fun setPlayerSelectedId(id: Int) {
+        _playerSelectedId = id
     }
 
-    fun setPlayerSelectedId(id: Int) {
-        _playerSelectedId.value = id
+    private fun setComputerChoice(): String {
+        return choices.random()
     }
 
     fun setStatus(status: Boolean) {
         _status = status
     }
 
-
     fun playGame(choice: String) {
-        _computerChoice = computerChoice()
+        _computerChoice = setComputerChoice()
         _result = if (choice == computerChoice) {
             "draw"
         } else if (choice == choices[0] && computerChoice == choices[2] ||
