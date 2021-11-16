@@ -25,41 +25,40 @@ class MainActivity : AppCompatActivity() {
 
         binding.gameViewModel = gameViewModel
 
+        val playerChoices: List<ShapeableImageView> = listOf(
+            binding.batuPlayer,
+            binding.kertasPlayer,
+            binding.guntingPlayer
+        )
+
+        val computerChoices: List<ShapeableImageView> = listOf(
+            binding.batuComputer,
+            binding.kertasComputer,
+            binding.guntingComputer
+        )
+
+        val allAvailableChoices: List<ShapeableImageView> =
+            mergeAllChoices(playerChoices, computerChoices)
+
+
+
         setTitleColor()
-        recreateState()
+        recreateState(allAvailableChoices)
 
-        binding.batuPlayer.setOnClickListener {
-            gameViewModel.setChoice(getString(R.string.batuChoice))
-            gameViewModel.setPlayerSelectedId(it.id)
-            it.setBackgroundColor(getColor(R.color.selected))
-            freezeState()
-            gameViewModel.playGame(gameViewModel.choice)
-            viewComputerChoice()
-            setResult()
-        }
-
-        binding.kertasPlayer.setOnClickListener {
-            gameViewModel.setChoice(getString(R.string.kertasChoice))
-            gameViewModel.setPlayerSelectedId(it.id)
-            it.setBackgroundColor(getColor(R.color.selected))
-            freezeState()
-            gameViewModel.playGame(gameViewModel.choice)
-            viewComputerChoice()
-            setResult()
-        }
-
-        binding.guntingPlayer.setOnClickListener {
-            gameViewModel.setChoice(getString(R.string.guntingChoice))
-            gameViewModel.setPlayerSelectedId(it.id)
-            it.setBackgroundColor(getColor(R.color.selected))
-            freezeState()
-            gameViewModel.playGame(gameViewModel.choice)
-            viewComputerChoice()
-            setResult()
+        playerChoices.forEach {
+            it.setOnClickListener { shapeAbleView ->
+                gameViewModel.setChoice(shapeAbleView.contentDescription.toString())
+                gameViewModel.setPlayerSelectedId(shapeAbleView.id)
+                shapeAbleView.setBackgroundColor(getColor(R.color.selected))
+                freezeState(allAvailableChoices)
+                gameViewModel.playGame(gameViewModel.choice)
+                viewComputerChoice(computerChoices)
+                setResult()
+            }
         }
 
         binding.refresh.setOnClickListener {
-            restartGame()
+            restartGame(allAvailableChoices)
         }
     }
 
@@ -102,68 +101,57 @@ class MainActivity : AppCompatActivity() {
     }
 
     // highlight computer choice
-    private fun viewComputerChoice() {
-        when (gameViewModel.computerChoice) {
-            "Batu" -> {
-                binding.batuComputer.setBackgroundColor(getColor(R.color.selected))
-                binding.kertasComputer.setBackgroundColor(getColor(R.color.white))
-                binding.guntingComputer.setBackgroundColor(getColor(R.color.white))
-            }
-            "Kertas" -> {
-                binding.batuComputer.setBackgroundColor(getColor(R.color.white))
-                binding.kertasComputer.setBackgroundColor(getColor(R.color.selected))
-                binding.guntingComputer.setBackgroundColor(getColor(R.color.white))
-            }
-            "Gunting" -> {
-                binding.batuComputer.setBackgroundColor(getColor(R.color.white))
-                binding.kertasComputer.setBackgroundColor(getColor(R.color.white))
-                binding.guntingComputer.setBackgroundColor(getColor(R.color.selected))
-            }
-        }
+    private fun viewComputerChoice(computerShapeableImageView: List<ShapeableImageView>) {
+        val computerChoice =
+            computerShapeableImageView.filter { it.contentDescription == gameViewModel.computerChoice }
+        computerChoice[0].setBackgroundColor(getColor(R.color.selected))
     }
 
     // make all button non-tappable except restart button.
-    private fun freezeState() {
+    private fun freezeState(shapeableImageViews: List<ShapeableImageView>) {
         gameViewModel.setStatus(false)
-        binding.batuPlayer.isEnabled = gameViewModel.status
-        binding.kertasPlayer.isEnabled = gameViewModel.status
-        binding.guntingPlayer.isEnabled = gameViewModel.status
+        shapeableImageViews.forEach {
+            it.isEnabled = gameViewModel.status
+        }
     }
 
     // un-freeze freezeState or restart the game
-    private fun restartGame() {
+    private fun restartGame(shapeableImageViews: List<ShapeableImageView>) {
         gameViewModel.setStatus(true)
-        binding.batuPlayer.isEnabled = gameViewModel.status
-        binding.kertasPlayer.isEnabled = gameViewModel.status
-        binding.guntingPlayer.isEnabled = gameViewModel.status
-        binding.batuPlayer.setBackgroundColor(getColor(R.color.white))
-        binding.kertasPlayer.setBackgroundColor(getColor(R.color.white))
-        binding.guntingPlayer.setBackgroundColor(getColor(R.color.white))
-        binding.batuComputer.setBackgroundColor(getColor(R.color.white))
-        binding.kertasComputer.setBackgroundColor(getColor(R.color.white))
-        binding.guntingComputer.setBackgroundColor(getColor(R.color.white))
+        shapeableImageViews.forEach {
+            it.isEnabled = gameViewModel.status
+            it.setBackgroundColor(getColor(R.color.white))
+        }
         binding.result.text = getString(R.string.start_game)
         binding.result.setTextColor(getColor(R.color.VS))
         binding.result.setBackgroundColor(getColor(R.color.white))
     }
 
     // to handle configuration changes
-    private fun recreateState() {
+    private fun recreateState(shapeableImageViews: List<ShapeableImageView>) {
         if (gameViewModel.choice.isNotBlank()) {
-            val selectedPlayerButton =
-                findViewById<ShapeableImageView>(gameViewModel.playerSelectedId)
-            selectedPlayerButton.setBackgroundColor(getColor(R.color.selected))
+            findViewById<ShapeableImageView>(gameViewModel.playerSelectedId).setBackgroundColor(
+                getColor(R.color.selected)
+            )
 
-            val selectedComputerButton =
-                when (gameViewModel.computerChoice) {
-                    gameViewModel.choices[0] -> binding.batuComputer
-                    gameViewModel.choices[1] -> binding.kertasComputer
-                    gameViewModel.choices[2] -> binding.guntingComputer
-                    else -> null
-                }
-            selectedComputerButton!!.setBackgroundColor(getColor(R.color.selected))
-            freezeState()
+            when (gameViewModel.computerChoice) {
+                gameViewModel.choices[0] -> binding.batuComputer
+                gameViewModel.choices[1] -> binding.kertasComputer
+                gameViewModel.choices[2] -> binding.guntingComputer
+                else -> null
+            }!!.setBackgroundColor(getColor(R.color.selected))
+
+            freezeState(shapeableImageViews)
             setResult()
         }
+    }
+
+    // to merge all playable choices
+    fun mergeAllChoices(vararg shapeableImageViews: List<ShapeableImageView>): List<ShapeableImageView> {
+        val mergedChoices = mutableListOf<ShapeableImageView>()
+        shapeableImageViews.forEach {
+            mergedChoices.addAll(it)
+        }
+        return mergedChoices
     }
 }
