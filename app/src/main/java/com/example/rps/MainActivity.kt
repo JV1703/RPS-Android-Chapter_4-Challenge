@@ -116,9 +116,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     // un-freeze freezeState or restart the game
-    private fun restartGame(shapeableImageViews: List<ShapeableImageView>) {
+    private fun restartGame(allChoices: List<ShapeableImageView>) {
         gameViewModel.setStatus(true)
-        shapeableImageViews.forEach {
+        allChoices.forEach {
             it.isEnabled = gameViewModel.status
             it.setBackgroundColor(getColor(R.color.white))
         }
@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // to handle configuration changes
-    private fun recreateState(shapeableImageViews: List<ShapeableImageView>) {
+    private fun recreateState(selectedChoices: List<ShapeableImageView>) {
         if (gameViewModel.choice.isNotBlank()) {
             findViewById<ShapeableImageView>(gameViewModel.playerSelectedId).setBackgroundColor(
                 getColor(R.color.selected)
@@ -141,13 +141,13 @@ class MainActivity : AppCompatActivity() {
                 else -> null
             }!!.setBackgroundColor(getColor(R.color.selected))
 
-            freezeState(shapeableImageViews)
+            freezeState(selectedChoices)
             setResult()
         }
     }
 
     // to merge all playable choices
-    fun mergeAllChoices(vararg shapeableImageViews: List<ShapeableImageView>): List<ShapeableImageView> {
+    private fun mergeAllChoices(vararg shapeableImageViews: List<ShapeableImageView>): List<ShapeableImageView> {
         val mergedChoices = mutableListOf<ShapeableImageView>()
         shapeableImageViews.forEach {
             mergedChoices.addAll(it)
