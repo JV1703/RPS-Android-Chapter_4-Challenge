@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 gameViewModel.setPlayerSelectedId(shapeAbleView.id)
                 shapeAbleView.setBackgroundColor(getColor(R.color.selected))
                 freezeState(allAvailableChoices)
-                gameViewModel.playGame(gameViewModel.choice)
+                gameViewModel.playGame()
                 viewComputerChoice(computerChoices)
                 setResult()
             }
@@ -101,24 +101,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     // highlight computer choice
-    private fun viewComputerChoice(computerShapeableImageView: List<ShapeableImageView>) {
+    private fun viewComputerChoice(computerChoices: List<ShapeableImageView>) {
         val computerChoice =
-            computerShapeableImageView.filter { it.contentDescription == gameViewModel.computerChoice }
+            computerChoices.filter { it.contentDescription == gameViewModel.computerChoice }
         computerChoice[0].setBackgroundColor(getColor(R.color.selected))
     }
 
     // make all button non-tappable except restart button.
-    private fun freezeState(shapeableImageViews: List<ShapeableImageView>) {
+    private fun freezeState(allAvailableChoices: List<ShapeableImageView>) {
         gameViewModel.setStatus(false)
-        shapeableImageViews.forEach {
+        allAvailableChoices.forEach {
             it.isEnabled = gameViewModel.status
         }
     }
 
     // un-freeze freezeState or restart the game
-    private fun restartGame(allChoices: List<ShapeableImageView>) {
+    private fun restartGame(allAvailableChoices: List<ShapeableImageView>) {
         gameViewModel.setStatus(true)
-        allChoices.forEach {
+        allAvailableChoices.forEach {
             it.isEnabled = gameViewModel.status
             it.setBackgroundColor(getColor(R.color.white))
         }

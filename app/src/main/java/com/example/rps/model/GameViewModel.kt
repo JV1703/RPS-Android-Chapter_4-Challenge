@@ -40,9 +40,9 @@ class GameViewModel : ViewModel() {
         _status = status
     }
 
-    fun playGame(choice: String) {
+    fun playGame() {
         _computerChoice = setComputerChoice()
-        _result = if (choice == computerChoice) {
+        _result = if (_choice == computerChoice) {
             "draw"
         } else if (choice == choices[0] && computerChoice == choices[2] ||
             choice == choices[1] && computerChoice == choices[0] ||
