@@ -53,7 +53,7 @@ class GameViewModel : ViewModel() {
             "lose"
         }
 
-        Log.d(
+        Log.i(
             "result",
             "player: $choice - computer: $computerChoice - result = $result"
         )

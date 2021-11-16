@@ -143,7 +143,6 @@ class MainActivity : AppCompatActivity() {
         binding.kertasComputer.setBackgroundColor(getColor(R.color.white))
         binding.guntingComputer.setBackgroundColor(getColor(R.color.white))
         binding.result.text = getString(R.string.start_game)
-        binding.result.textSize = 16f
         binding.result.setTextColor(getColor(R.color.VS))
         binding.result.setBackgroundColor(getColor(R.color.white))
     }
