@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.rps.databinding.ActivityMainBinding
@@ -85,17 +86,17 @@ class MainActivity : AppCompatActivity() {
             "draw" -> {
                 binding.result.text = getString(R.string.draw)
                 binding.result.setTextColor(getColor(R.color.white))
-                binding.result.setBackgroundColor(getColor(R.color.draw))
+                binding.result.changeBackground(R.color.draw)
             }
             "win" -> {
                 binding.result.text = getString(R.string.player_win)
                 binding.result.setTextColor(getColor(R.color.white))
-                binding.result.setBackgroundColor(getColor(R.color.result))
+                binding.result.changeBackground(R.color.result)
             }
             else -> {
                 binding.result.text = getString(R.string.computer_win)
                 binding.result.setTextColor(getColor(R.color.white))
-                binding.result.setBackgroundColor(getColor(R.color.result))
+                binding.result.changeBackground(R.color.result)
             }
         }
     }
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     private fun viewComputerChoice(computerChoices: List<ShapeableImageView>) {
         val computerChoice =
             computerChoices.filter { it.contentDescription == gameViewModel.computerChoice }
-        computerChoice[0].setBackgroundColor(getColor(R.color.selected))
+        computerChoice[0].changeBackground(R.color.selected)
     }
 
     // make all button non-tappable except restart button.
@@ -120,11 +121,11 @@ class MainActivity : AppCompatActivity() {
         gameViewModel.setStatus(true)
         allAvailableChoices.forEach {
             it.isEnabled = gameViewModel.status
-            it.setBackgroundColor(getColor(R.color.white))
+            it.changeBackground(R.color.white)
         }
         binding.result.text = getString(R.string.start_game)
         binding.result.setTextColor(getColor(R.color.VS))
-        binding.result.setBackgroundColor(getColor(R.color.white))
+        binding.result.changeBackground(R.color.white)
     }
 
     // to handle configuration changes
@@ -139,7 +140,7 @@ class MainActivity : AppCompatActivity() {
                 gameViewModel.choices[1] -> binding.kertasComputer
                 gameViewModel.choices[2] -> binding.guntingComputer
                 else -> null
-            }!!.setBackgroundColor(getColor(R.color.selected))
+            }!!.changeBackground(R.color.selected)
 
             freezeState(selectedChoices)
             setResult()
@@ -153,5 +154,9 @@ class MainActivity : AppCompatActivity() {
             mergedChoices.addAll(it)
         }
         return mergedChoices
+    }
+
+    private fun View.changeBackground(Id: Int) {
+        setBackgroundColor(getColor(Id))
     }
 }

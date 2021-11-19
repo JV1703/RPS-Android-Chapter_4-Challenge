@@ -30,9 +30,9 @@
             android:textColor="@color/name_tag"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toTopOf="@+id/batuPlayer"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/batuPlayer"
@@ -42,9 +42,9 @@
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/kertasPlayer"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_1"
             app:layout_constraintStart_toStartOf="@+id/kertasPlayer"
-            app:layout_constraintTop_toTopOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1"
             app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/batu" />
 
@@ -56,7 +56,7 @@
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/guntingPlayer"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/batuPlayer"
             app:shapeAppearance="@style/roundedCorners"
@@ -68,9 +68,9 @@
             android:layout_height="0dp"
             android:contentDescription="@string/guntingChoice"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline_2"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_1"
             app:layout_constraintStart_toStartOf="@+id/kertasPlayer"
             app:layout_constraintTop_toBottomOf="@+id/kertasPlayer"
             app:shapeAppearance="@style/roundedCorners"
@@ -87,8 +87,8 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toTopOf="@+id/batuComputer"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_2"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/batuComputer"
@@ -99,8 +99,8 @@
             app:layout_constraintBottom_toTopOf="@+id/kertasComputer"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="@+id/kertasComputer"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_2"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1"
             app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/batu" />
 
@@ -113,7 +113,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guntingComputer"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_2"
             app:layout_constraintTop_toBottomOf="@+id/batuComputer"
             app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/kertas" />
@@ -124,10 +124,10 @@
             android:layout_height="0dp"
             android:contentDescription="@string/guntingChoice"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline_2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="@+id/kertasComputer"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_2"
             app:layout_constraintTop_toBottomOf="@+id/kertasComputer"
             app:shapeAppearance="@style/roundedCorners"
             app:srcCompat="@drawable/gunting" />
@@ -145,9 +145,9 @@
             android:textColor="@color/VS"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="@+id/kertasPlayer"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_2"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_1"
             app:layout_constraintTop_toTopOf="@+id/kertasComputer"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -157,12 +157,13 @@
             android:layout_height="0dp"
             android:fontFamily="@font/caveat_brush"
             android:gravity="center"
+            android:lineSpacingMultiplier="0.6"
             android:rotation="@dimen/rotation"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline_1"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_2"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:text="@string/title" />
@@ -177,37 +178,36 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_2"
             app:srcCompat="@drawable/refresh" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
+            android:id="@+id/vertical_guideline_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.25" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
+            android:id="@+id/vertical_guideline_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
+            android:id="@+id/horizontal_guideline_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.25" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
+            android:id="@+id/horizontal_guideline_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.85" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
