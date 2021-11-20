@@ -25,7 +25,6 @@ class GameViewModel : ViewModel() {
 
     fun setChoice(choice: String) {
         _choice = choice
-        Log.d("GameViewModel checking", choice)
     }
 
     fun setPlayerSelectedId(id: Int) {
@@ -54,7 +53,7 @@ class GameViewModel : ViewModel() {
         }
 
         Log.i(
-            "result",
+            "game_result",
             "player: $choice - computer: $computerChoice - result = $result"
         )
     }

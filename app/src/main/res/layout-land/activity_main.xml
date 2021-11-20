@@ -12,6 +12,7 @@
         <variable
             name="gameViewModel"
             type="com.example.rps.model.GameViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
