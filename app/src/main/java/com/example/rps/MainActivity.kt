@@ -121,11 +121,11 @@ class MainActivity : AppCompatActivity() {
         gameViewModel.setStatus(true)
         allAvailableChoices.forEach {
             it.isEnabled = gameViewModel.status
-            it.changeBackground(R.color.white)
+            it.changeBackground(R.color.transparent)
         }
         binding.result.text = getString(R.string.start_game)
         binding.result.setTextColor(getColor(R.color.VS))
-        binding.result.changeBackground(R.color.white)
+        binding.result.changeBackground(R.color.transparent)
     }
 
     // to handle configuration changes

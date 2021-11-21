@@ -15,4 +15,5 @@
     <color name="VS">#FFFF0000</color>
     <color name="result">#FF92D050</color>
     <color name="draw">#FF0070C0</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
