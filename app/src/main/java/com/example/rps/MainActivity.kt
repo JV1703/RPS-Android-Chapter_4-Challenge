@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         binding.gameViewModel = gameViewModel
+        binding.lifecycleOwner = this
 
         val playerChoices: List<ShapeableImageView> = listOf(
             binding.batuPlayer,
@@ -118,6 +119,7 @@ class MainActivity : AppCompatActivity() {
 
     // un-freeze freezeState or restart the game
     private fun restartGame(allAvailableChoices: List<ShapeableImageView>) {
+        gameViewModel.resetAllChoice()
         gameViewModel.setStatus(true)
         allAvailableChoices.forEach {
             it.isEnabled = gameViewModel.status
@@ -130,9 +132,9 @@ class MainActivity : AppCompatActivity() {
 
     // to handle configuration changes
     private fun recreateState(selectedChoices: List<ShapeableImageView>) {
-        if (gameViewModel.choice.isNotBlank()) {
-            findViewById<ShapeableImageView>(gameViewModel.playerSelectedId).setBackgroundColor(
-                getColor(R.color.selected)
+        if (gameViewModel.playerSelectedId != 0) {
+            findViewById<ShapeableImageView>(gameViewModel.playerSelectedId).changeBackground(
+                R.color.selected
             )
 
             when (gameViewModel.computerChoice) {
@@ -144,6 +146,8 @@ class MainActivity : AppCompatActivity() {
 
             freezeState(selectedChoices)
             setResult()
+        } else {
+            restartGame(selectedChoices)
         }
     }
 

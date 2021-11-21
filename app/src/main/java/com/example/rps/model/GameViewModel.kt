@@ -35,6 +35,11 @@ class GameViewModel : ViewModel() {
         return choices.random()
     }
 
+    fun resetAllChoice(){
+        _playerSelectedId = 0
+        _computerChoice = ""
+    }
+
     fun setStatus(status: Boolean) {
         _status = status
     }
