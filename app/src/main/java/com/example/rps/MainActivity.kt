@@ -48,10 +48,10 @@ class MainActivity : AppCompatActivity() {
         recreateState(allAvailableChoices)
 
         playerChoices.forEach {
-            it.setOnClickListener { shapeAbleView ->
-                gameViewModel.setChoice(shapeAbleView.contentDescription.toString())
-                gameViewModel.setPlayerSelectedId(shapeAbleView.id)
-                shapeAbleView.setBackgroundColor(getColor(R.color.selected))
+            it.setOnClickListener { choice ->
+                gameViewModel.setChoice(choice.contentDescription.toString())
+                gameViewModel.setPlayerSelectedId(choice.id)
+                choice.setBackgroundColor(getColor(R.color.selected))
                 freezeState(allAvailableChoices)
                 gameViewModel.playGame()
                 viewComputerChoice(computerChoices)
