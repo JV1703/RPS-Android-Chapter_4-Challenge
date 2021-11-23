@@ -2,6 +2,7 @@ package com.example.rps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
@@ -17,6 +18,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val gameViewModel: GameViewModel by viewModels()
 
+    private lateinit var playerChoices: List<ShapeableImageView>
+    private lateinit var computerChoices: List<ShapeableImageView>
+    private lateinit var allAvailableChoices: List<ShapeableImageView>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,21 +32,19 @@ class MainActivity : AppCompatActivity() {
         binding.gameViewModel = gameViewModel
         binding.lifecycleOwner = this
 
-        val playerChoices: List<ShapeableImageView> = listOf(
+        playerChoices = listOf(
             binding.batuPlayer,
             binding.kertasPlayer,
             binding.guntingPlayer
         )
 
-        val computerChoices: List<ShapeableImageView> = listOf(
+        computerChoices = listOf(
             binding.batuComputer,
             binding.kertasComputer,
             binding.guntingComputer
         )
 
-        val allAvailableChoices: List<ShapeableImageView> =
-            mergeAllChoices(playerChoices, computerChoices)
-
+        allAvailableChoices = mergeAllChoices(playerChoices, computerChoices)
 
 
         setTitleColor()
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 gameViewModel.setChoice(choice.contentDescription.toString())
                 gameViewModel.setPlayerSelectedId(choice.id)
                 choice.setBackgroundColor(getColor(R.color.selected))
-                freezeState(allAvailableChoices)
+                freezeState(playerChoices)
                 gameViewModel.playGame()
                 viewComputerChoice(computerChoices)
                 setResult()
@@ -62,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         binding.refresh.setOnClickListener {
             restartGame(allAvailableChoices)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+
     }
 
     // set color of game title
